@@ -14,7 +14,6 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("skills")
-
 public class SkillController {
 
     @Autowired
@@ -22,7 +21,7 @@ public class SkillController {
 
     @GetMapping ("/")
     public String index(Model model){
-        model.addAttribute(skillRepository.findAll());
+        model.addAttribute("skills",skillRepository.findAll());
         return "skills/index";
     }
 

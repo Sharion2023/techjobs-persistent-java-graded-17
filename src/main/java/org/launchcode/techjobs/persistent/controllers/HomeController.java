@@ -40,7 +40,6 @@ public class HomeController {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
-
         return "redirect:";
     }
 

@@ -31,7 +31,6 @@ public class EmployerController {
     public String displayAddEmployerForm(Model model) {
         model.addAttribute("title", "All Employers");
         model.addAttribute(new Employer());
-        model.addAttribute("employers", employerRepository.findAll());
         return "employers/add";
     }
 

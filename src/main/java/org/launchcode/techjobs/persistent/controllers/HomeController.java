@@ -60,16 +60,26 @@ public class HomeController {
             return "add";
         }
         Optional<Employer> results = employerRepository.findById(employerId);
-        Employer employer = results.get();
-        newJob.setEmployer(employer);
-        jobRepository.save(newJob);
+        if (results.isPresent()) {
+            Employer employer = results.get();
+            newJob.setEmployer(employer);
+            jobRepository.save(newJob);
+
+        }
         return "redirect:";
+
     }
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
-
-            return "view";
+        Optional <Job> result = jobRepository.findById(jobId);
+        if (result.isPresent()) {
+            Job job = result.get();
+            model.addAttribute("job", job);
+            return "/view";
+        } else {
+            return "redirect:../";
+        }
     }
 
 }

@@ -29,7 +29,6 @@ public class SkillController {
     public String displayAddSkillForm(Model model){
 
         model.addAttribute(new Skill());
-        model.addAttribute("skills", skillRepository.findAll());
         return "skills/add";
     }
 
@@ -45,9 +44,9 @@ public class SkillController {
 
     @GetMapping("view/{skillId}")
     public String displayViewSkill(Model model, @PathVariable int skillId) {
-        Optional result = skillRepository.findById(skillId);
+        Optional<Skill> result = skillRepository.findById(skillId);
         if(result.isPresent()) {
-            Skill skill= (Skill) result.get();
+            Skill skill= result.get();
             model.addAttribute("skill", skill);
             return "skills/view";
         } else

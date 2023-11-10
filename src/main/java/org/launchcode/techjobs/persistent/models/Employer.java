@@ -16,6 +16,18 @@ public class Employer extends AbstractEntity {
     @Size(max=50, message="Location name too long!")
     private String location;
 
+    @OneToMany
+    @JoinColumn(name="employer_id")
+    private List<Job> jobs = new ArrayList<>();
+
+
+    public Employer(String location, List<Job> jobs) {
+        this.location = location;
+        this.jobs = jobs;
+    }
+
+    public Employer() {}
+
     public String getLocation() {
         return location;
     }
@@ -23,10 +35,6 @@ public class Employer extends AbstractEntity {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    @OneToMany
-    @JoinColumn(name="employer_id")
-    private List<Job> jobs = new ArrayList<>();
 
     public List<Job> getJobs() {
         return jobs;
@@ -36,11 +44,5 @@ public class Employer extends AbstractEntity {
         this.jobs = jobs;
     }
 
-    public Employer(String location, List<Job> jobs) {
 
-        this.location = location;
-        this.jobs = jobs;
-    }
-
-    public Employer() {}
 }

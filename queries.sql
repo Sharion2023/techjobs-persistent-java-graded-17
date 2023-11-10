@@ -5,8 +5,8 @@ SELECT name FROM employer WHERE location = "St. Louis City";
 --Part 3
 DROP TABLE job;
 --Part 4
-SELECT name from skill
+SELECT * FROM skill
 INNER JOIN job_skills
-on skill.id = job_skills.skills_id
+ON skill.id = job_skills.skills_id
 WHERE job_skills.jobs_id IS NOT NULL
-ORDER by NAME ASC;
+ORDER BY NAME ASC;
